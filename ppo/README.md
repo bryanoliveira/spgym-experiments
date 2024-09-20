@@ -1,0 +1,1 @@
+Create a Python environment with `requirements.txt` or compile the Dockerfile. To reproduce all results, simply run the recipes available in `scripts`.
