@@ -1,2 +1,0 @@
-gymnasium<0.30
-matplotlib<4
