@@ -51,7 +51,7 @@ class Args:
     """whether to capture videos of the agent performances (check out `videos` folder)"""
 
     # Algorithm specific arguments
-    env_id: str = "SlidingPuzzle-v0"
+    env_id: str = "SlidingPuzzles-v0"
     env_configs: str = None
     """the id of the environment"""
     total_timesteps: int = 10000000
