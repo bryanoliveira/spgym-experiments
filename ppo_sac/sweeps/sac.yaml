@@ -1,0 +1,34 @@
+name: sac
+program: train_sac.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - --is-sweep
+  - --total-timesteps
+  - 3000000
+  - --env-configs
+  - '{"w": 3, "variation": "image", "image_folder": "imagenet-1k", "image_pool_size": 1, "image_pool_seed": 1}'
+  - --async-envs
+  - --num-envs
+  - 64
+  - --no-autotune
+  - ${args}
+method: bayes
+metric:
+  name: charts/rolling_mean_return
+  goal: maximize
+early_terminate:
+  type: hyperband
+  min_iter: 100
+run_cap: 300
+parameters:
+  # SAC
+  reward-scale:
+    distribution: log_uniform_values
+    min: 0.1
+    max: 10
+  alpha:
+    distribution: log_uniform_values
+    min: 0.05
+    max: 0.5

@@ -1,0 +1,13 @@
+runs*
+wandb/
+dataset*
+
+.DS_Store
+.DS_Store?
+.pytest_cache
+dist
+__pycache__/
+*.py[cod]
+*.egg-info
+MUJOCO_LOG.TXT
+.directory

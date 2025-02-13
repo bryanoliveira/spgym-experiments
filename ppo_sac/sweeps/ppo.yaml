@@ -1,0 +1,50 @@
+program: ppo.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - --is-sweep
+  - True
+  - --total-timesteps
+  - 1000000
+  - --env-configs
+  - '{"w": 3, "variation": "image", "image_folder": "imagenet-1k", "image_pool_size": 1}'
+  - --num-envs
+  - 512
+  # - --async-envs
+  # - True
+  - --buffer-size
+  - 500000
+  - --batch-size
+  - 4096
+  - ${args}
+method: bayes
+metric:
+  name: charts/rolling_mean_return
+  goal: maximize
+parameters:
+  # PPO
+  learning_rate:
+    distribution: log_uniform_values
+    min: 1e-5
+    max: 1e-3
+  update_epochs:
+    distribution: int_uniform
+    min: 2
+    max: 8
+  num_steps:
+    distribution: int_uniform
+    min: 4
+    max: 16
+  ent_coef:
+    distribution: log_uniform_values
+    min: 0.001
+    max: 0.1
+  target_kl:
+    distribution: log_uniform_values
+    min: 0.0001
+    max: 0.1
+
+early_terminate:
+  type: hyperband
+  min_iter: 100

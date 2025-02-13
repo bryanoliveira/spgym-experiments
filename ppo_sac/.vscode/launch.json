@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CleanRL",
+            "type": "debugpy",
+            "request": "launch",
+            // "program": "ppo.py",
+            "program": "train_sac.py",
+            // "program": "sac_continuous.py",
+            "args": [
+                "--exp-name", "debug",
+                "--fail-fast",
+                // "--seed", "176",
+                // "--batch-size", "4",
+                // "--buffer-size", "100",
+                // "--env-id", "BreakoutNoFrameskip-v4",
+                // "--env-id", "dm_control/finger-spin-v0",
+                // "--env-configs", "{\"frameskip\": 1, \"repeat_action_probability\": 0}",
+                "--env-configs", "{\"w\": 3, \"variation\": \"image\", \"image_folder\": \"imagenet-1k\", \"image_pool_size\": 1}",
+                // "--env-configs", "{\"render_mode\": \"rgb_array\", \"from_pixels\": true, \"render_kwargs\": {\"width\": 84, \"height\": 84, \"camera_id\": 0}}",
+                // "--env-configs", "{\"render_mode\": \"rgb_array\", \"from_pixels\": true, \"render_kwargs\": {\"width\": 100, \"height\": 100, \"camera_id\": 0}}",
+                // "--apply-data-augmentation", "True",
+                // "--use-curl-loss", "True",
+                // "--contrastive-positives", "augmented",
+                // "--use-spr-loss", "True",
+                // "--total-timesteps", "1000000",
+                // "--early-stop-patience", "100",
+                // "--no-cuda",
+                // "--num-envs", "2",
+                // "--learning-starts", "10000",
+                // "--async-envs",
+                // "--use-reconstruction-loss",
+                // "--variational-reconstruction",
+                // "--checkpoint_load_path", "runs/20240529_162721-ppo_alebreakoutv5_frameskip_1_repeat_action_probability_0_267/checkpoint_9216000.pth",
+                // "--checkpoint_param_filter", "^encoder\\."
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

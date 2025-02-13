@@ -1,0 +1,3 @@
+{
+    "exclude": ["runs", "wandb", "runs_old"]
+}

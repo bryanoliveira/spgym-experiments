@@ -1,0 +1,46 @@
+name: sac_con_aug
+program: train_sac.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - --is-sweep
+  - True
+  - --total-timesteps
+  - 1000000
+  - --env-configs
+  - '{"w": 3, "variation": "image", "image_folder": "imagenet-1k", "image_pool_size": 5, "image_pool_seed": 1}'
+  - --num-envs
+  - 512
+  # - --async-envs
+  # - True
+  # Representation
+  - --use-curl-loss
+  - True
+  - --contrastive-positives
+  - augmented
+  - --augmentations
+  - "channel_shuffle,brightness,color_jitter,inversion,grayscale"
+  - ${args}
+method: bayes
+metric:
+  name: charts/rolling_mean_return
+  goal: maximize
+early_terminate:
+  type: hyperband
+  min_iter: 100
+run_cap: 300
+parameters:
+  # Representation
+  repr-loss-coef:
+    distribution: log_uniform_values
+    min: 0.0001
+    max: 1
+  encoder-tau:
+    distribution: log_uniform_values
+    min: 0.001
+    max: 1
+  target-encoder-frequency:
+    distribution: int_uniform
+    min: 1
+    max: 3
