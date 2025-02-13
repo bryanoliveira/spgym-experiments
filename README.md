@@ -54,10 +54,12 @@ bash scripts/scale.sh
 
 These are the expected results:
 
-![Average Steps to 80% Success](docs/average_steps_to_80_selected.png)
+![Average Steps to 80% Success](docs/dreamer_comparison_lines.png)
+![Average Steps to 80% Success](docs/ppo_comparison_lines.png)
+![Average Steps to 80% Success](docs/sac_comparison_lines.png)
 
-<small><b>Average number of steps to solve the puzzle as a function of the pool size.</b> We consider the puzzle solved when the agents reach $80\%$ success rate and limit the maximum number of environment steps per run to 10 million. Error bars represent the $95\%$ confidence interval of a bootstrap with 1,000 resamples from 5 independent seeds.</small>
+<small><b>Learning curves for DreamerV3, PPO and SAC variants.</b> Shaded regions represent 95\% confidence intervals across 5 independent runs.</small>
 
-![Success Rates](docs/success_rates.png)
+![Success Rates](docs/scale_comparison.png)
 
-<small><b>Success rate as a function of environment steps.</b> Gradual increase in representation complexity impacts sample efficiency for PPO and DreamerV3 agents. Error bands represent the $95\%$ confidence interval of a bootstrap with 1,000 resamples from 5 independent seeds and a rolling window of 10,000 environment steps.</small>
+<small><b>Success rate as a function of environment steps.</b> The gradual increase in representation complexity affects the sample efficiency of standard PPO, SAC, and DreamerV3 agents at different rates. Each line represents a different pool size, from 1 to 100 images. Shaded regions represent 95\% confidence intervals across 5 independent seeds.</small>
